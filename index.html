@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
@@ -23,15 +24,15 @@
 			</div>
 
 			<div class="flex-w m-t-10 m-b-10">
-				<a href="#" class="size3 flex-c-m how-social trans-04 m-r-6">
+				<a href="https://www.facebook.com/acm.tecgdl/" target="_blank" class="size3 flex-c-m how-social trans-04 m-r-6">
 					<i class="fa fa-facebook"></i>
 				</a>
 
-				<a href="#" class="size3 flex-c-m how-social trans-04 m-r-6">
+				<a href="https://twitter.com/ACMTecGdl" target="_blank" class="size3 flex-c-m how-social trans-04 m-r-6">
 					<i class="fa fa-twitter"></i>
 				</a>
 
-				<a href="#" class="size3 flex-c-m how-social trans-04 m-r-6">
+				<a href="https://www.youtube.com/channel/UCl2Dqo4dyiJggUPEL1ocjRA" target="_blank" class="size3 flex-c-m how-social trans-04 m-r-6">
 					<i class="fa fa-youtube-play"></i>
 				</a>
 			</div>
@@ -40,10 +41,10 @@
 		<div class="flex-w flex-sa p-r-200 respon1">
 			<div class="p-t-34 p-b-60 respon3">
 				<p class="l1-txt1 p-b-10 respon2">
-					Proximamente
+					Próximamente
 				</p>
 
-				<h3 class="l1-txt2 p-b-45 respon2 respon4">
+				<h3 class="l1-txt2 p-b-45 respon2 respon4 animated fadeIn">
 					Code GDL 2019
 				</h3>
 
@@ -55,26 +56,27 @@
 				<h3 class="l1-txt3 txt-center p-b-43">
 					Newsletter
 				</h3>
+                <div class="alert">¡Tu mensaje se ha enviado!</div>
 
-				<form class="w-full validate-form">
+				<form id = "contactForm" class="w-full validate-form">
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Name is required">
-						<input class="input100 placeholder0 s1-txt1" type="text" name="name" placeholder="Nombre">
+						<input required id="name" class="input100 placeholder0 s1-txt1" type="text" name="name" placeholder="Nombre">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-20" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100 placeholder0 s1-txt1" type="text" name="email" placeholder="Email">
+						<input required id="email" class="input100 placeholder0 s1-txt1" type="email" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 					</div>
 					
-					<button class="flex-c-m size2 s1-txt2 how-btn1 trans-04">
-						Suscribete
+					<button type = "submit" class="flex-c-m size2 s1-txt2 how-btn1 trans-04">
+						Suscríbete
 					</button>
 				</form>
 
 				<p class="s1-txt3 txt-center p-l-15 p-r-15 p-t-25">
-					Escucharas pronto de nosotros!
+					¡Escucharás pronto de nosotros!
 				</p>
 			</div>
 		</div>
@@ -89,13 +91,16 @@
 	<script src="vendor/countdowntime/moment-timezone-with-data.min.js"></script>
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 	<script>
+        var countdown = new Date("Mar 19, 2019 9:00:00").getTime();
+        var now = new Date().getTime();
+        var distance = countdown - now;
 		$('.cd100').countdown100({
 			endtimeYear: 0,
 			endtimeMonth: 0,
-			endtimeDate: 141,
-			endtimeHours: 8,
-			endtimeMinutes: 33,
-			endtimeSeconds: 52,
+			endtimeDate: Math.floor(distance / (1000 * 60 * 60 * 24)),
+			endtimeHours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+			endtimeMinutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+			endtimeSeconds: Math.floor((distance % (1000 * 60)) / 1000),
 			timeZone: "" 
 		});
 
@@ -107,6 +112,7 @@
 			scale: 1.1
 		})
 	</script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
 	<script src="js/main.js"></script>
 
 </body>
