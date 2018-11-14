@@ -20,12 +20,14 @@
           var obj = $(this);
           var timeNow = new Date();
 
-          var tZ = options.timeZone; console.log(tZ);
+          var tZ = options.timeZone; 
+            //console.log(tZ);
           var endYear = options.endtimeYear;
           var endMonth = options.endtimeMonth;
           var endDate = options.endtimeDate;
           var endHours = options.endtimeHours;
           var endMinutes = options.endtimeMinutes;
+            console.log(endMinutes);
           var endSeconds = options.endtimeSeconds;
 
           if(tZ == "") {
@@ -36,7 +38,8 @@
           }
 
           if(Date.parse(deadline) < Date.parse(timeNow)) {
-            var deadline = new Date(Date.parse(new Date()) + endDate * 24 * 60 * 60 * 1000 + endHours * 60 * 60 * 1000); 
+            var deadline = new Date(Date.parse(new Date()) + endDate * 24 * 60 * 60 * 1000 + endHours * 60 * 60 * 1000 + endMinutes * 60 * 1000 + endSeconds * 1000); 
+              console.log(deadline);
           }
           
           var t = Date.parse(deadline) - Date.parse(new Date());
